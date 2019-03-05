@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer;
+using DataAccessLayer;
 using Project.Models;
 using System;
 using System.Web.Mvc;
@@ -7,7 +8,15 @@ namespace Project.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly MyBll bll = new MyBll();
+        private readonly IMyBll bll; // MyBll bll = new MyBll();
+
+        public HomeController(IMyBll bll)
+        {
+            //custom test deppendency injection
+            //bll = new MyBll(new MyDal(new RAES()));
+            this.bll = bll;
+        }
+
         public ActionResult Index()
         {
             var text = bll.EmployessCount();

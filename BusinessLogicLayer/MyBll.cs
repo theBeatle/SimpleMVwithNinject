@@ -2,9 +2,14 @@
 
 namespace BusinessLogicLayer
 {
-    public class MyBll
+    public class MyBll : IMyBll
     {
-        private readonly MyDal dal = new MyDal();
+        private readonly IMyDal dal;         //MyDal dal = new MyDal();
+
+        public MyBll(IMyDal dal)
+        {
+            this.dal = dal;
+        }
 
         public string EmployessCount()
         {
