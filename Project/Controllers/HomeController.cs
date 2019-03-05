@@ -1,16 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using BusinessLogicLayer;
+using Project.Models;
+using System;
 using System.Web.Mvc;
 
 namespace Project.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly MyBll bll = new MyBll();
         public ActionResult Index()
         {
-            return View();
+            var text = bll.EmployessCount();
+
+            var model = new MessageIndexModel
+            {
+                Message = text,
+                EmployeesCount = Int32.Parse(text.Substring(text.IndexOf('=') + 1))
+            };
+
+            return View(model);
         }
 
         public ActionResult About()
