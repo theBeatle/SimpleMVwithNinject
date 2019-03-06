@@ -1,17 +1,35 @@
 ﻿@{
     ViewBag.Title = "Contact";
+
+
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+    <input type="text" placeholder="from" name="from" id="from1">
+    <input type="text" placeholder="to" name="to" id="to1">
+ 
+    <button id="sendBtn" type="submit" value="get info"/>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+
+<div id="container"></div>
+
+@section scripts{
+<script>
+    $(function () {
+        $("#sendBtn").click(function () {
+           
+            $.ajax({
+                method: "post",
+                url: "/api/Interval/AddInterval",
+                data: { from: $("#from1").val(), to: $("#to1").val() },
+                succes: function (data) {
+                    $("#container").val(data);
+                }
+            })
+        })
+    });
+</script>
+
+    
+}

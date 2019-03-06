@@ -20,15 +20,11 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink( "OdminkaPortal", "Index",
-                        "Home",new { area="Odminko" }, htmlAttributes: null )</li>
-                    <li>@Html.ActionLink("SecretaryPortal", "Index",
-                        "Home", new { area = "Secretutka" }, htmlAttributes: null)</li>
                 </ul>
             </div>
         </div>
     </div>
+
     <div class="container body-content">
         @RenderBody()
         <hr />

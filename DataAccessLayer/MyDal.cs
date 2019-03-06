@@ -20,5 +20,12 @@ namespace DataAccessLayer
         {
             return ctx.Set<Employee>().Count();  //    .Employees.Count();
         }
+
+        public List<DateInterval> GetIntervals(DateInterval model)
+        {
+            var res = ctx.Set<DateInterval>().Where(d => (d.StartDate >= model.StartDate && d.StartDate <= model.EndDate)
+             || (d.EndDate >= model.StartDate && d.EndDate <= model.EndDate));
+            return res.ToList();
+        }
     }
 }

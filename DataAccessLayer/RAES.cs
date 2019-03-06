@@ -14,6 +14,9 @@ namespace DataAccessLayer
 
         
          public virtual DbSet<Employee> Employees { get; set; }
+
+         public virtual DbSet<DateInterval> DateIntervals { get; set; }
+
     }
 
 
